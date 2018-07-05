@@ -19,9 +19,16 @@ theater = Course.create(subject: "Theater", day: "Monday")
 asian_studies = Course.create(subject: "Asian Studies", day: "Tuesday")
 
 music.teacher = ro
+music.save
 math.teacher = shirley
+math.save
 reading.teacher = shirley
+reading.save
 writing.teacher = shirley
+writing.save
 film.teacher = housley
+film.save
 theater.teacher = housley
+theater.save
 asian_studies.teacher = harding
+asian_studies.save

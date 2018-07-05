@@ -26,12 +26,16 @@ ActiveRecord::Schema.define(version: 20180705162524) do
 
   create_table "students", force: :cascade do |t|
     t.string "name"
+    t.string "username"
+    t.string "password_digest"
   end
 
   create_table "teachers", force: :cascade do |t|
     t.string  "name"
+    t.string  "username"
     t.string  "alma_mater"
     t.integer "years_experience"
+    t.string  "password_digest"
   end
 
 end

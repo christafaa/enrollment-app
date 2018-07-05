@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'sinatra'
 gem 'activerecord', '4.2.7.1', :require => 'active_record'

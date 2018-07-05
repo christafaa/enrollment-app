@@ -3,10 +3,10 @@ harry = Student.create(name: "Harry Lee")
 chris_a = Student.create(name: "Chris Alberti")
 chris_t = Student.create(name: "Chris Talarico")
 ryan = Student.create(name: "Ryan Tarabocchia")
-alex = Student.create(name: "Alex Ludwig")
+alex = Student.create(name: "Alex Ludewig")
 
 ro = Teacher.create(name: "Mr. Ro", alma_mater: "Rutgers", years_experience: 5)
-shirley = Teacher.create(name: "Ms. Shirley", alma_mater: "Harvard", years_experience: 2)
+sherry = Teacher.create(name: "Ms. Sherry", alma_mater: "Harvard", years_experience: 2)
 housley = Teacher.create(name: "Mr. Housley", alma_mater: "NVOT", years_experience: 8)
 harding = Teacher.create(name: "Mr. Hanson-Harding", alma_mater: "Princeton", years_experience: 20)
 
@@ -20,11 +20,11 @@ asian_studies = Course.create(subject: "Asian Studies", day: "Tuesday")
 
 music.teacher = ro
 music.save
-math.teacher = shirley
+math.teacher = sherry
 math.save
-reading.teacher = shirley
+reading.teacher = sherry
 reading.save
-writing.teacher = shirley
+writing.teacher = sherry
 writing.save
 film.teacher = housley
 film.save

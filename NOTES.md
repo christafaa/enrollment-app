@@ -1,33 +1,32 @@
 Teachers:
-A teacher has many klasses
+A teacher has many courses
 ———
 A teacher has a name (string)
 A teacher has an alma mater (string)
 A teacher has years of experience (integer)
-A teacher can create/edit their klasses
+A teacher can create/edit their courses
 A teacher can create/edit their teacher profile
  
-Klasses:
-A klass belongs to a teacher
-A klass has many klass_students
-A klass has many students through klass_students ———
-A klass has a subject (string)
-A klass has a day of the week (string)
-A klass has a teacher_id (integer)
- 
-Klass_students:
-A klass_student belongs to a klass 
-A klass_student belongs to a student
+Courses:
+A course belongs to a teacher
+A course has many enrollments
+A course has many students through enrollments
+ ———
+A course has a subject (string)
+A course has a day of the week (string)
+A course has a teacher_id (integer)
+
+Enrollment:
+An enrollment belongs to a course
+An enrollment belongs to a student
 ———
-A klass_student has a klass_id (integer)
-A klass_student has a student_id (integer)
+An enrollment has a course_id (integer)
+An enrollment has a student_id (integer)
  
 Students:
-A student has many klass_students
-A student has many klasses through klass_students
+A student has many enrollments
+A student has many courses through enrollments
 ———
 A student has a name (string)
-A student can sign up for a klass but cannot edit a klass
-A student can create/edit their student profile
- 
-How does all of this look to you? Should I rethink anything or go full speed ahead? 
+A student can sign up for a course but cannot edit a course
+A student can create/edit their student profiles

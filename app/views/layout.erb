@@ -5,7 +5,17 @@
     <title></title>
   </head>
   <body>
-    <p><a href="/courses">Courses</a> <a href="/teachers">Teachers</a></p>
+    <% if session.has_key?(:user_id) %>
+
+      <% if session[:user_type] == "teacher" %>
+        <p><a href="/teachers/<%= Teacher.find(session[:user_id]).slug %>">Home</a> <a href="/logout">Logout</a></p>
+      <% elsif session[:user_type] == "student" %>
+        <p><a href="/students/<%= Student.find(session[:user_id]).slug %>">Home</a> <a href="/logout">Logout</a></p>
+      <% end %>
+
+      <p><a href="/courses">Courses</a> <a href="/teachers">Teachers</a> <a href="/students">Students</a></p>
+
+    <% end %>
 
     <%= yield %>
 

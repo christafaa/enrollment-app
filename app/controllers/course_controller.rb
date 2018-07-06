@@ -1,7 +1,11 @@
 class CourseController < ApplicationController
 
   get '/courses' do
-    erb :'courses/index'
+    if session.has_key?(:user_id)
+      erb :'courses/index'
+    else
+      redirect '/login'
+    end
   end
 
   get '/courses/:course_subject' do

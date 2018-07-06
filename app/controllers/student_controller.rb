@@ -4,6 +4,11 @@ class StudentController < ApplicationController
     erb :'students/index'
   end
 
+  get '/students/:student_name' do
+    @student = Student.find_by_slug(params[:student_name])
+    erb :'students/show'
+  end
+
   get '/students/new' do
     erb :'students/new'
   end
@@ -15,5 +20,5 @@ class StudentController < ApplicationController
       Student.create(params)
     end
   end
-  
+
 end

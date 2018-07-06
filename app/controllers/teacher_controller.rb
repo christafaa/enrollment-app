@@ -4,6 +4,11 @@ class TeacherController < ApplicationController
     erb :'teachers/index'
   end
 
+  get '/teachers/:teacher_name' do
+    @teacher = Teacher.find_by_slug(params[:teacher_name])
+    erb :'teachers/show'
+  end
+
   get '/teachers/new' do
     erb :'teachers/new'
   end

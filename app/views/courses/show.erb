@@ -1,0 +1,12 @@
+<h1><%= @course.subject %></h1>
+
+<h3>Teacher: <a href="/teachers/<%= @course.teacher.slug %>"><%= @course.teacher.name %></a></h3>
+
+<h3>Schedule: This class is taught on every <%= @course.day %>.</h3>
+
+<h3>Students:</h3>
+<ul>
+  <% @course.students.each do |student| %>
+    <li><a href="/students/<%= student.slug %>"><%= student.name %></a></li>
+  <% end %>
+</ul>

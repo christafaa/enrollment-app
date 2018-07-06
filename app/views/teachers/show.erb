@@ -10,6 +10,6 @@
   <% end %>
 </ul>
 
-<% if session[:user_id] == @teacher.id %>
+<% if session[:user_id] == @teacher.id && session[:user_type] == "teacher" %>
   <a href="/teachers/<%= @teacher.slug %>/edit">Edit Teacher Profile</a>
 <% end %>

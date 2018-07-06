@@ -23,7 +23,12 @@ class StudentController < ApplicationController
 
   get '/students/:slug/edit' do
     @student = Student.find_by_slug(params[:slug])
-    erb :'students/edit'
+
+    if session[:user_id] == @student.id && session[:user_type] == "student"
+      erb :'students/edit'
+    else
+      redirect "/students/#{@student.slug}"
+    end
   end
 
   patch '/students/:slug' do

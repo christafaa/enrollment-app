@@ -24,10 +24,10 @@ class TeacherController < ApplicationController
   get '/teachers/:slug/edit' do
     @teacher = Teacher.find_by_slug(params[:slug])
 
-    if session[:user_id] == @teacher.id
+    if session[:user_id] == @teacher.id && session[:user_type] == "teacher"
       erb :'teachers/edit'
     else
-      redirect '/'
+      redirect "/teachers/#{@teacher.slug}"
     end
   end
 

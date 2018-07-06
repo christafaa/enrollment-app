@@ -32,6 +32,6 @@ A student can sign up for a course but cannot edit a course
 A student can create/edit their student profiles
 
 To do:
-- signup / login
-- Menu at top (of courses and teachers) if logged in 
+- teachers can create/edit courses
 - write readme
+- unique usernames

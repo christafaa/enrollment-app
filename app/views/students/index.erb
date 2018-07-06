@@ -1,0 +1,7 @@
+<h1>Students</h1>
+
+<ul>
+  <% Student.all.each do |student| %>
+    <li><a href="/students/<%= student.slug %>"><%= student.name %></a></li>
+  <% end %>
+</ul>

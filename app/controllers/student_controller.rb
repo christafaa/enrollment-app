@@ -1,4 +1,9 @@
 class StudentController < ApplicationController
+
+  get '/students' do
+    erb :'students/index'
+  end
+
   get '/students/new' do
     erb :'students/new'
   end
@@ -10,4 +15,5 @@ class StudentController < ApplicationController
       Student.create(params)
     end
   end
+  
 end

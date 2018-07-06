@@ -1,4 +1,9 @@
 class TeacherController < ApplicationController
+
+  get '/teachers' do
+    erb :'teachers/index'
+  end
+
   get '/teachers/new' do
     erb :'teachers/new'
   end
@@ -10,4 +15,5 @@ class TeacherController < ApplicationController
       Teacher.create(params)
     end
   end
+
 end

@@ -1,0 +1,7 @@
+<h1>Teachers</h1>
+
+<ul>
+  <% Teacher.all.each do |teacher| %>
+    <li><a href="/teachers/<%= teacher.slug %>"><%= teacher.name %></a></li>
+  <% end %>
+</ul>

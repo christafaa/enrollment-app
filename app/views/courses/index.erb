@@ -2,6 +2,6 @@
 
 <ul>
   <% Course.all.each do |course| %>
-    <li><a href="/course/"><%= course.name %></a></li>
+    <li><a href="/courses/<%= course.slug %>"><%= course.subject %></a></li>
   <% end %>
 </ul>

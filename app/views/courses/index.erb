@@ -1,5 +1,9 @@
 <h1>Courses</h1>
 
+<% if session[:user_type] == "teacher" %>
+  <h3><a href="/courses/new">Create a Course</a></h3>  
+<% end %>
+
 <ul>
   <% Course.all.each do |course| %>
     <li><a href="/courses/<%= course.slug %>"><%= course.subject %></a></li>

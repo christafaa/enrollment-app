@@ -1,5 +1,19 @@
 <h1>Create a Course</h1>
 
-<form action="index.html" method="post">
-  
+<form action="/courses" method="post">
+  <label for="">Subject:</label>
+  <input type="text" name="subject" value="" required>
+
+  <br><br>
+
+  <label for="">Day of the Week:</label><br>
+  <input type="radio" name="day" value="Monday" required>Monday<br>
+  <input type="radio" name="day" value="Tuesday" required>Tuesday<br>
+  <input type="radio" name="day" value="Wednesday" required>Wednesday<br>
+  <input type="radio" name="day" value="Thursday" required>Thursday<br>
+  <input type="radio" name="day" value="Friday" required>Friday<br>
+
+  <br><br>
+
+  <input type="submit" value="Create Course">
 </form>

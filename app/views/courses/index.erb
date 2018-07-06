@@ -1,0 +1,7 @@
+<h1>Courses</h1>
+
+<ul>
+  <% Course.all.each do |course| %>
+    <li><a href="/course/"><%= course.name %></a></li>
+  <% end %>
+</ul>

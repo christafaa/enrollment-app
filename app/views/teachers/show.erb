@@ -1,8 +1,15 @@
 <h1><%= @teacher.name %></h1>
 
+<h3>Alma mater: <%=  @teacher.alma_mater %></h3>
+<h3>Years experience: <%=  @teacher.years_experience %></h3>
+
 <h3>Courses:</h3>
 <ul>
   <% @teacher.courses.each do |course| %>
     <li><a href="/courses/<%= course.slug %>"><%= course.subject %></a></li>
   <% end %>
 </ul>
+
+<% if session[:user_id] == @teacher.id %>
+  <a href="/teachers/<%= @teacher.slug %>/edit">Edit Teacher Profile</a>
+<% end %>

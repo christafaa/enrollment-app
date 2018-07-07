@@ -17,7 +17,10 @@ class StudentController < ApplicationController
     if params[:name].empty? || params[:username].empty? || params[:password].empty?
       redirect '/students/new'
     else
-      Student.create(params)
+      student = Student.create(params)
+      session[:user_id] = student.id
+      session[:user_type] = "student"
+      redirect "/students/#{student.slug}"
     end
   end
 

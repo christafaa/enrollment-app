@@ -15,3 +15,11 @@
   <a href="/courses/<%= @course.slug %>/edit">Edit this Course</a><br>
   <a href="/courses/<%= @course.slug %>/delete">Delete this Course</a>
 <% end %>
+
+<% if session[:user_type] == "student" && !@course.students.include?(Student.find(session[:user_id]))%>
+  <a href="/courses/<%= @course.slug %>/join">Join this Course</a>
+<% end %>
+
+<% if session[:user_type] == "student" && @course.students.include?(Student.find(session[:user_id]))%>
+  <a href="/courses/<%= @course.slug %>/leave">Leave this Course</a>
+<% end %>

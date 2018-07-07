@@ -32,7 +32,6 @@ A student can sign up for a course but cannot edit a course
 A student can create/edit their student profiles
 
 To do:
-- teachers can create/edit/delete courses
 - students can join/leave courses (if they are in the course, the link asks if they want to leave)
 - students/teachers can delete their profiles (leads to are you sure? page)
 - write readme

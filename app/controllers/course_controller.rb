@@ -55,4 +55,26 @@ class CourseController < ApplicationController
     redirect "/courses/#{course.slug}"
   end
 
+  get '/courses/:course_subject/join' do
+    if session[:user_type] == "student"
+      student = Student.find(session[:user_id])
+      course = Course.find_by_slug(params[:course_subject])
+      course.students << student
+      redirect "/courses/#{course.slug}"
+    else
+      redirect "/courses/#{course.slug}"
+    end
+  end
+
+  get '/courses/:course_subject/leave' do
+    if session[:user_type] == "student"
+      student = Student.find(session[:user_id])
+      course = Course.find_by_slug(params[:course_subject])
+      course.students.delete(student)
+      redirect "/courses/#{course.slug}"
+    else
+      redirect "/courses/#{course.slug}"
+    end
+  end
+
 end

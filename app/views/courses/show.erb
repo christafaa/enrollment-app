@@ -12,5 +12,6 @@
 </ul>
 
 <% if session[:user_type] == "teacher" && @course.teacher.id == session[:user_id] %>
+  <a href="/courses/<%= @course.slug %>/edit">Edit this Course</a><br>
   <a href="/courses/<%= @course.slug %>/delete">Delete this Course</a>
 <% end %>

@@ -1,0 +1,21 @@
+<h1>Edit a Course</h1>
+
+<form action="/courses/<%= @course.slug %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <label for="subject">Subject:</label>
+  <input type="text" name="subject" value="<%= @course.subject %>" required>
+
+  <br><br>
+
+  <label for="day">Day of the Week:</label><br>
+  <input type="radio" name="day" value="Monday" required <%= "checked" if @course.day == "Monday"%>>Monday<br>
+  <input type="radio" name="day" value="Tuesday" required <%= "checked" if @course.day == "Tuesday"%>>Tuesday<br>
+  <input type="radio" name="day" value="Wednesday" required <%= "checked" if @course.day == "Wednesday"%>>Wednesday<br>
+  <input type="radio" name="day" value="Thursday" required <%= "checked" if @course.day == "Thursday"%>>Thursday<br>
+  <input type="radio" name="day" value="Friday" required <%= "checked" if @course.day == "Friday"%>>Friday<br>
+
+  <br><br>
+
+  <input type="submit" value="Edit Course">
+</form>

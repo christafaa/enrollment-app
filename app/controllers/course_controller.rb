@@ -42,4 +42,17 @@ class CourseController < ApplicationController
     end
   end
 
+  get '/courses/:course_subject/edit' do
+    @course = Course.find_by_slug(params[:course_subject])
+    erb :'courses/edit'
+  end
+
+  patch '/courses/:course_subject' do
+    course = Course.find_by_slug(params[:course_subject])
+    course.subject = params[:subject] unless params[:subject].empty?
+    course.day = params[:day] unless params[:day].empty?
+    course.save
+    redirect "/courses/#{course.slug}"
+  end
+
 end

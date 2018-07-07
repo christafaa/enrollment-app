@@ -1,14 +1,14 @@
-andrew = Student.create(name: "Andrew DiMola", username: "zhadn", password_digest: BCrypt::Password.create("zhadn"))
-harry = Student.create(name: "Harry Lee", username: "hlee", password_digest: BCrypt::Password.create("cool_guy"))
-chris_a = Student.create(name: "Chris Alberti", username: "christafaa", password_digest: BCrypt::Password.create("himom"))
-chris_t = Student.create(name: "Chris Talarico", username: "christal", password_digest: BCrypt::Password.create("password"))
-ryan = Student.create(name: "Ryan Tarabocchia", username: "ryant", password_digest: BCrypt::Password.create("password1"))
-alex = Student.create(name: "Alex Ludewig", username: "alexl", password_digest: BCrypt::Password.create("password2"))
+andrew = Student.create(name: "Florence Perez", username: "florence", password_digest: BCrypt::Password.create("perez"))
+harry = Student.create(name: "Luis Potter", username: "luis", password_digest: BCrypt::Password.create("potter"))
+chris_a = Student.create(name: "Herbert Robbins", username: "herbert", password_digest: BCrypt::Password.create("robbins"))
+chris_t = Student.create(name: "Joanne Poole", username: "joanne", password_digest: BCrypt::Password.create("poole"))
+ryan = Student.create(name: "Ernestine Holmes", username: "ernestine", password_digest: BCrypt::Password.create("holmes"))
+alex = Student.create(name: "Alberto Bradley", username: "alberto", password_digest: BCrypt::Password.create("bradley"))
 
-ro = Teacher.create(name: "Mr. Ro", alma_mater: "Rutgers", years_experience: 5, username: "n_ro", password_digest: BCrypt::Password.create("password1"))
-sherry = Teacher.create(name: "Ms. Sherry", alma_mater: "Harvard", years_experience: 2, username: "sherry", password_digest: BCrypt::Password.create("password2"))
-housley = Teacher.create(name: "Mr. Housley", alma_mater: "NVOT", years_experience: 8, username: "housley", password_digest: BCrypt::Password.create("password3"))
-harding = Teacher.create(name: "Mr. Hanson-Harding", alma_mater: "Princeton", years_experience: 20, username: "brian", password_digest: BCrypt::Password.create("password4"))
+ferg = Teacher.create(name: "Ms. Ferguson", alma_mater: "Flatiron School", years_experience: 5, username: "ferguson", password_digest: BCrypt::Password.create("password1"))
+dar = Teacher.create(name: "Dr. Darren", alma_mater: "Harvard", years_experience: 2, username: "darren", password_digest: BCrypt::Password.create("password2"))
+george = Teacher.create(name: "Mrs. George", alma_mater: "Yale", years_experience: 8, username: "george", password_digest: BCrypt::Password.create("password3"))
+col = Teacher.create(name: "Mr. Collier", alma_mater: "Princeton", years_experience: 20, username: "collier", password_digest: BCrypt::Password.create("password4"))
 
 music = Course.create(subject: "Music", day: "Monday")
 math = Course.create(subject: "Math", day: "Tuesday")
@@ -18,17 +18,17 @@ film = Course.create(subject: "Film", day: "Friday")
 theater = Course.create(subject: "Theater", day: "Monday")
 asian_studies = Course.create(subject: "Asian Studies", day: "Tuesday")
 
-music.teacher = ro
+music.teacher = ferg
 music.save
-math.teacher = sherry
+math.teacher = dar
 math.save
-reading.teacher = sherry
+reading.teacher = dar
 reading.save
-writing.teacher = sherry
+writing.teacher = dar
 writing.save
-film.teacher = housley
+film.teacher = george
 film.save
-theater.teacher = housley
+theater.teacher = george
 theater.save
-asian_studies.teacher = harding
+asian_studies.teacher = col
 asian_studies.save

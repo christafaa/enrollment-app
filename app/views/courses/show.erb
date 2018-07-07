@@ -10,3 +10,7 @@
     <li><a href="/students/<%= student.slug %>"><%= student.name %></a></li>
   <% end %>
 </ul>
+
+<% if session[:user_type] == "teacher" && @course.teacher.id == session[:user_id] %>
+  <a href="/courses/<%= @course.slug %>/delete">Delete this Course</a>
+<% end %>

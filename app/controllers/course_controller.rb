@@ -20,13 +20,26 @@ class CourseController < ApplicationController
     if params[:subject].empty?
       redirect '/courses/new'
     else
-      course = Course.create(params)
+      course = Course.new(params)
+      course.teacher = Teacher.find(session[:user_id])
+      course.save
+      redirect '/courses'
     end
   end
 
   get '/courses/:course_subject' do
     @course = Course.find_by_slug(params[:course_subject])
     erb :'courses/show'
+  end
+
+  get '/courses/:course_subject/delete' do
+    course = Course.find_by_slug(params[:course_subject])
+    if session[:user_type] == "teacher" && course.teacher.id == session[:user_id]
+      course.delete
+      redirect '/courses'
+    else
+      redirect "/courses/#{course.slug}"
+    end
   end
 
 end

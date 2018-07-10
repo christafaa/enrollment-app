@@ -28,8 +28,12 @@ class CourseController < ApplicationController
   end
 
   get '/courses/:course_subject' do
-    @course = Course.find_by_slug(params[:course_subject])
-    erb :'courses/show'
+    if session.has_key?(:user_id)
+      @course = Course.find_by_slug(params[:course_subject])
+      erb :'courses/show'
+    else
+      redirect '/login'
+    end
   end
 
   get '/courses/:course_subject/delete' do
@@ -43,8 +47,13 @@ class CourseController < ApplicationController
   end
 
   get '/courses/:course_subject/edit' do
-    @course = Course.find_by_slug(params[:course_subject])
-    erb :'courses/edit'
+    # problem here - needs to be the teacher of the course
+    if session.has_key?(:user_id)
+      @course = Course.find_by_slug(params[:course_subject])
+      erb :'courses/edit'
+    else
+      redirect '/login'
+    end
   end
 
   patch '/courses/:course_subject' do

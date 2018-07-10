@@ -1,7 +1,11 @@
 class StudentController < ApplicationController
 
   get '/students' do
-    erb :'students/index'
+    if session.has_key?(:user_id)
+      erb :'students/index'
+    else
+      redirect '/login'
+    end
   end
 
   get '/students/new' do
@@ -9,18 +13,22 @@ class StudentController < ApplicationController
   end
 
   get '/students/:student_name' do
-    @student = Student.find_by_slug(params[:student_name])
-    erb :'students/show'
+    if session.has_key?(:user_id)
+      @student = Student.find_by_slug(params[:student_name])
+      erb :'students/show'
+    else
+      redirect '/login'
+    end
   end
 
   post '/students' do
-    if params[:name].empty? || params[:username].empty? || params[:password].empty?
-      redirect '/students/new'
-    else
-      student = Student.create(params)
+    student = Student.create(params)
+    if student.valid?
       session[:user_id] = student.id
       session[:user_type] = "student"
       redirect "/students/#{student.slug}"
+    else
+      redirect '/students/new'
     end
   end
 

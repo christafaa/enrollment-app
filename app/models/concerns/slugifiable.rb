@@ -2,8 +2,8 @@ module Slugifiable
 
   module InstanceMethods
     def slug
-      if self.respond_to?("name")
-        self.name.downcase.split(" ").join("-").split(".").join("")
+      if self.respond_to?("username")
+        self.username.downcase.split(" ").join("-").split(".").join("")
       elsif self.respond_to?("subject")
         self.subject.downcase.split(" ").join("-")
       else

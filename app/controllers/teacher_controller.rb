@@ -1,7 +1,11 @@
 class TeacherController < ApplicationController
 
   get '/teachers' do
-    erb :'teachers/index'
+    if session.has_key?(:user_id)
+      erb :'teachers/index'
+    else
+      redirect '/login'
+    end
   end
 
   get '/teachers/new' do
@@ -9,15 +13,22 @@ class TeacherController < ApplicationController
   end
 
   get '/teachers/:teacher_name' do
-    @teacher = Teacher.find_by_slug(params[:teacher_name])
-    erb :'teachers/show'
+    if session.has_key?(:user_id)
+      @teacher = Teacher.find_by_slug(params[:teacher_name])
+      erb :'teachers/show'
+    else
+      redirect '/login'
+    end
   end
 
   post '/teachers' do
-    if params[:name].empty? || params[:username].empty? || params[:password].empty?
-      redirect '/teachers/new'
+    teacher = Teacher.create(params)
+    if teacher.valid?
+      session[:user_id] = teacher.id
+      session[:user_type] = "teacher"
+      redirect "/teachers/#{teacher.slug}"
     else
-      Teacher.create(params)
+      redirect '/teachers/new'
     end
   end
 

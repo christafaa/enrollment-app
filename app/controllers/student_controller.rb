@@ -53,9 +53,14 @@ class StudentController < ApplicationController
 
   get '/students/:slug/delete' do
     student = Student.find_by_slug(params[:slug])
-    student.delete
-    session.clear
-    redirect '/'
+
+    if session[:user_id] == student.id && session[:user_type] == "student"
+      student.delete
+      session.clear
+      redirect '/'
+    else
+      redirect "/students/#{student.slug}"
+    end
   end
 
 end

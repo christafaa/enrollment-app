@@ -51,4 +51,11 @@ class StudentController < ApplicationController
     redirect "/students/#{student.slug}"
   end
 
+  get '/students/:slug/delete' do
+    student = Student.find_by_slug(params[:slug])
+    student.delete
+    session.clear
+    redirect '/'
+  end
+
 end

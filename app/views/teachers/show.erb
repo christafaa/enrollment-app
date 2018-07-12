@@ -5,6 +5,7 @@
 <h3>Years experience: <%=  @teacher.years_experience %></h3>
 
 <% if session[:user_type] == "teacher" && session[:user_id] == @teacher.id %>
+  <h3>Username: <%= @teacher.username %></h3>
   <h4><a href="/courses/new">Create a Course</a></h4>
 <% end %>
 
@@ -13,8 +14,13 @@
   <% @teacher.courses.each do |course| %>
     <li><a href="/courses/<%= course.slug %>"><%= course.subject %></a></li>
   <% end %>
+
+  <% if @teacher.courses.empty? %>
+    <li>None</li>
+  <% end %>
 </ul>
 
 <% if session[:user_id] == @teacher.id && session[:user_type] == "teacher" %>
-  <a href="/teachers/<%= @teacher.slug %>/edit">Edit Teacher Profile</a>
+  <a href="/teachers/<%= @teacher.slug %>/edit">Edit Teacher Profile</a><br>
+  <a href="/teachers/<%=  @teacher.slug  %>/delete">Delete Teacher Profile</a>
 <% end %>

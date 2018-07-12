@@ -1,13 +1,22 @@
 <h1>Student Profile</h1>
 <h2><%= @student.name %></h2>
 
+<% if session[:user_id] == @student.id && session[:user_type] == "student" %>
+  <h3>Username: <%= @student.username %></h3>
+<% end %>
+
 <h3>Courses:</h3>
 <ul>
   <% @student.courses.each do |course| %>
     <li><a href="/courses/<%= course.slug %>"><%= course.subject %>,</a> taught by: <a href="/teachers/<%= course.teacher.slug %>"><%= course.teacher.name %></a></li>
   <% end %>
+
+  <% if @student.courses.empty? %>
+    <li>None</li>
+  <% end %>
 </ul>
 
 <% if session[:user_id] == @student.id && session[:user_type] == "student" %>
-  <a href="/students/<%= @student.slug %>/edit">Edit Student Profile</a>
+  <a href="/students/<%= @student.slug %>/edit">Edit Student Profile</a><br>
+  <a href="/students/<%= @student.slug  %>/delete"> Delete Student Profile</a>
 <% end %>

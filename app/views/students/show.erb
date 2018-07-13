@@ -5,7 +5,7 @@
   <h3>Username: <%= @student.username %></h3>
 <% end %>
 
-<h3>Courses:</h3>
+<h3>Enrolled Courses:</h3>
 <ul>
   <% @student.courses.each do |course| %>
     <li><a href="/courses/<%= course.slug %>"><%= course.subject %>,</a> taught by: <a href="/teachers/<%= course.teacher.slug %>"><%= course.teacher.name %></a></li>

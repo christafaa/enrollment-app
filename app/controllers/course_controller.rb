@@ -47,12 +47,11 @@ class CourseController < ApplicationController
   end
 
   get '/courses/:course_subject/edit' do
-    # problem here - needs to be the teacher of the course
-    if session.has_key?(:user_id)
-      @course = Course.find_by_slug(params[:course_subject])
+    @course = Course.find_by_slug(params[:course_subject])
+    if session.has_key?(:user_id) && session[:user_type] == "teacher" && @course.teacher.id == session[:user_id]
       erb :'courses/edit'
     else
-      redirect '/login'
+      redirect "/courses/#{@course.slug}"
     end
   end
 

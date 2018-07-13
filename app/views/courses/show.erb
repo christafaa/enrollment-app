@@ -1,6 +1,10 @@
 <h1><%= @course.subject %></h1>
 
-<h3>Teacher: <a href="/teachers/<%= @course.teacher.slug %>"><%= @course.teacher.name %></a></h3>
+<% if @course.teacher.nil? %>
+  <h3>Teacher: N/A</h3>
+<% else %>
+  <h3>Teacher: <a href="/teachers/<%= @course.teacher.slug %>"><%= @course.teacher.name %></a></h3>
+<% end %>
 
 <h3>Schedule: This class is taught on every <%= @course.day %>.</h3>
 
@@ -11,7 +15,7 @@
   <% end %>
 </ul>
 
-<% if session[:user_type] == "teacher" && @course.teacher.id == session[:user_id] %>
+<% if !@course.teacher.nil? && session[:user_type] == "teacher" && @course.teacher.id == session[:user_id] %>
   <a href="/courses/<%= @course.slug %>/edit">Edit this Course</a><br>
   <a href="/courses/<%= @course.slug %>/delete">Delete this Course</a>
 <% end %>

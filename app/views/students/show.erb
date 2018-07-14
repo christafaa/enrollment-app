@@ -8,7 +8,15 @@
 <h3>Enrolled Courses:</h3>
 <ul>
   <% @student.courses.each do |course| %>
-    <li><a href="/courses/<%= course.slug %>"><%= course.subject %>,</a> taught by: <a href="/teachers/<%= course.teacher.slug %>"><%= course.teacher.name %></a></li>
+    <li>
+      <a href="/courses/<%= course.slug %>"><%= course.subject %>,</a>
+      <% if !course.teacher.nil? %>
+        taught by: <a href="/teachers/<%= course.teacher.slug %>"><%= course.teacher.name %></a>
+      <% else %>
+        taught by: N/A
+      <% end %>
+    </li>
+
   <% end %>
 
   <% if @student.courses.empty? %>

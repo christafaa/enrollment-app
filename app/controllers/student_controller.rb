@@ -23,7 +23,7 @@ class StudentController < ApplicationController
 
   post '/students' do
     student = Student.create(params)
-    if student.valid?
+    if student.valid? && !student.name.split(" ").join("").empty? && !student.username.split(" ").join.empty?
       session[:user_id] = student.id
       session[:user_type] = "student"
       redirect "/students/#{student.slug}"

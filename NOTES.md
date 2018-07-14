@@ -30,7 +30,3 @@ A student has many courses through enrollments
 A student has a name (string)
 A student can sign up for a course but cannot edit a course
 A student can create/edit their student profiles
-
-To do:
-- students/teachers can delete their profiles (leads to are you sure? page)
-- write readme

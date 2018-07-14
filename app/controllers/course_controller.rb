@@ -48,7 +48,7 @@ class CourseController < ApplicationController
 
   get '/courses/:course_subject/edit' do
     @course = Course.find_by_slug(params[:course_subject])
-    if session.has_key?(:user_id) && session[:user_type] == "teacher" && @course.teacher.id == session[:user_id]
+    if session.has_key?(:user_id) && session[:user_type] == "teacher" && !@course.teacher.nil? && @course.teacher.id == session[:user_id]
       erb :'courses/edit'
     else
       redirect "/courses/#{@course.slug}"

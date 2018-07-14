@@ -23,7 +23,7 @@ class TeacherController < ApplicationController
 
   post '/teachers' do
     teacher = Teacher.create(params)
-    if teacher.valid?
+    if teacher.valid? && !teacher.name.split(" ").join("").empty? && !teacher.username.split(" ").join.empty?
       session[:user_id] = teacher.id
       session[:user_type] = "teacher"
       redirect "/teachers/#{teacher.slug}"

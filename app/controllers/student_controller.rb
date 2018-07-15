@@ -22,14 +22,19 @@ class StudentController < ApplicationController
   end
 
   post '/students' do
-    student = Student.create(params)
-    if student.valid? && !student.name.split(" ").join("").empty? && !student.username.split(" ").join.empty?
+    student = Student.new(params)
+    if student.name.split(" ").join("").empty?
+      flash[:message] = "Error: Full Name cannot be blank."
+    elsif student.username.split(" ").join("").empty?
+      flash[:message] = "Error: Username cannot be blank."
+    elsif !student.valid?
+      flash[:message] = "Error: Invalid input."
+    else
       session[:user_id] = student.id
       session[:user_type] = "student"
       redirect "/students/#{student.slug}"
-    else
-      redirect '/students/new'
     end
+    redirect '/students/new'
   end
 
   get '/students/:slug/edit' do

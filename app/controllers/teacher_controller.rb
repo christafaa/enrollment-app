@@ -22,7 +22,7 @@ class TeacherController < ApplicationController
   end
 
   post '/teachers' do
-    teacher = Teacher.create(params)
+    teacher = Teacher.new(params)
     if teacher.valid? && !teacher.name.split(" ").join("").empty? && !teacher.username.split(" ").join.empty?
       session[:user_id] = teacher.id
       session[:user_type] = "teacher"

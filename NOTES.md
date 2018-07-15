@@ -30,3 +30,7 @@ A student has many courses through enrollments
 A student has a name (string)
 A student can sign up for a course but cannot edit a course
 A student can create/edit their student profiles
+
+to do:
+
+do log-in validation

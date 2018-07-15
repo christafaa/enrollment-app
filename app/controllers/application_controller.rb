@@ -22,6 +22,7 @@ class ApplicationController < Sinatra::Base
         session[:user_type] = "teacher"
         redirect "/teachers/#{teacher.slug}"
       else
+        flash[:message] = "Incorrect username or password."
         redirect '/login'
       end
 
@@ -33,10 +34,12 @@ class ApplicationController < Sinatra::Base
         session[:user_type] = "student"
         redirect "/students/#{student.slug}"
       else
+        flash[:message] = "Incorrect username or password."
         redirect '/login'
       end
 
     else
+      flash[:message] = "Incorrect username or password."
       redirect '/login'
     end
   end

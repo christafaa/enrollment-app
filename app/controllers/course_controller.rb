@@ -17,13 +17,17 @@ class CourseController < ApplicationController
   end
 
   post '/courses' do
-    if params[:subject].empty?
+    course = Course.new(params)
+    if course.subject.split(" ").join("").empty?
+      flash[:message] = "Error: Subject cannot be blank."
       redirect '/courses/new'
-    else
-      course = Course.new(params)
+    elsif course.valid?
       course.teacher = Teacher.find(session[:user_id])
       course.save
       redirect '/courses'
+    else
+      flash[:message] = "Error: Invalid input."
+      redirect '/courses/new'
     end
   end
 

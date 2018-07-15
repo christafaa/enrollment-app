@@ -1,5 +1,10 @@
 <h1>Create a Course</h1>
 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+  <br><br>
+<% end %>
+
 <form action="/courses" method="post">
   <label for="subject">Subject:</label>
   <input type="text" name="subject" value="" required>

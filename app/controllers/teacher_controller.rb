@@ -30,6 +30,7 @@ class TeacherController < ApplicationController
     elsif !teacher.valid?
       flash[:message] = "Error: Invalid input."
     else
+      teacher.save
       session[:user_id] = teacher.id
       session[:user_type] = "teacher"
       redirect "/teachers/#{teacher.slug}"

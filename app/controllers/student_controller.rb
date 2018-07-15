@@ -30,6 +30,7 @@ class StudentController < ApplicationController
     elsif !student.valid?
       flash[:message] = "Error: Invalid input."
     else
+      student.save
       session[:user_id] = student.id
       session[:user_type] = "student"
       redirect "/students/#{student.slug}"

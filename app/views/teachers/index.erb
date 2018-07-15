@@ -4,4 +4,8 @@
   <% Teacher.all.each do |teacher| %>
     <li><a href="/teachers/<%= teacher.slug %>"><%= teacher.name %></a></li>
   <% end %>
+
+  <% if Teacher.all.empty? %>
+    <li>No teachers available</li>
+  <% end %>
 </ul>

@@ -4,4 +4,8 @@
   <% Student.all.each do |student| %>
     <li><a href="/students/<%= student.slug %>"><%= student.name %></a></li>
   <% end %>
+
+  <% if Student.all.empty? %>
+    <li>No students available</li>
+  <% end %>
 </ul>

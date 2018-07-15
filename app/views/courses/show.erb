@@ -13,6 +13,10 @@
   <% @course.students.each do |student| %>
     <li><a href="/students/<%= student.slug %>"><%= student.name %></a></li>
   <% end %>
+
+  <% if @course.students.empty? %>
+    <li>None</li>
+  <% end %>
 </ul>
 
 <% if !@course.teacher.nil? && session[:user_type] == "teacher" && @course.teacher.id == session[:user_id] %>

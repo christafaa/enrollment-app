@@ -16,7 +16,6 @@ reading = Course.create(subject: "Reading", day: "Wednesday")
 writing = Course.create(subject: "Writing", day: "Thursday")
 film = Course.create(subject: "Film", day: "Friday")
 theater = Course.create(subject: "Theater", day: "Monday")
-computer = Course.create(subject: "Computer Science", day: "Tuesday")
 
 music.teacher = george
 music.students += [florence, joanne, alberto]
@@ -41,7 +40,3 @@ film.save
 theater.teacher = george
 theater.students += [florence, joanne, alberto]
 theater.save
-
-computer.teacher = ferg
-computer.students += [luis, herbert, joanne, alberto]
-computer.save

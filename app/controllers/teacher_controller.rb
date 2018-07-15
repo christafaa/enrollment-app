@@ -23,13 +23,18 @@ class TeacherController < ApplicationController
 
   post '/teachers' do
     teacher = Teacher.new(params)
-    if teacher.valid? && !teacher.name.split(" ").join("").empty? && !teacher.username.split(" ").join.empty?
+    if teacher.name.split(" ").join("").empty?
+      flash[:message] = "Error: Full Name cannot be blank."
+    elsif teacher.username.split(" ").join("").empty?
+      flash[:message] = "Error: Username cannot be blank."
+    elsif !teacher.valid?
+      flash[:message] = "Error: Invalid input."
+    else
       session[:user_id] = teacher.id
       session[:user_type] = "teacher"
       redirect "/teachers/#{teacher.slug}"
-    else
-      redirect '/teachers/new'
     end
+    redirect '/teachers/new'
   end
 
   get '/teachers/:slug/edit' do

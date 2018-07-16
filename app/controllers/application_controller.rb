@@ -6,11 +6,27 @@ class ApplicationController < Sinatra::Base
   use Rack::Flash
 
   get '/' do
-    erb :index
+    if session.has_key?(:user_id) && session[:user_type] == "teacher"
+      teacher = Teacher.find(session[:user_id])
+      redirect "/teachers/#{teacher.slug}"
+    elsif session.has_key?(:user_id) && session[:user_type] == "student"
+      student = Student.find(session[:user_id])
+      redirect "/students/#{student.slug}"
+    else
+      erb :index
+    end
   end
 
   get '/login' do
-    erb :login
+    if session.has_key?(:user_id) && session[:user_type] == "teacher"
+      teacher = Teacher.find(session[:user_id])
+      redirect "/teachers/#{teacher.slug}"
+    elsif session.has_key?(:user_id) && session[:user_type] == "student"
+      student = Student.find(session[:user_id])
+      redirect "/students/#{student.slug}"
+    else
+      erb :login
+    end
   end
 
   post '/login' do

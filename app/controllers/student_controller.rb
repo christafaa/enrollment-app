@@ -9,7 +9,11 @@ class StudentController < ApplicationController
   end
 
   get '/students/new' do
-    erb :'students/new'
+    if session.has_key?(:user_id)
+      redirect '/students'
+    else
+      erb :'students/new'
+    end
   end
 
   get '/students/:student_name' do
